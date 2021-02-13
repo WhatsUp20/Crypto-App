@@ -21,28 +21,28 @@ class CoinViewModel(application: Application) : AndroidViewModel(application) {
 
     val priceList = db.coinPriceInfoDao().getPriceList()
 
+    fun getDetailInfo(fSym: String): LiveData<CoinPriceInfo> {
+        return db.coinPriceInfoDao().getPriceInfoAboutCoin(fSym)
+    }
+
     init {
         loadData()
     }
 
-    fun getDetailInfo(fSym: String):LiveData<CoinPriceInfo> {
-        return db.coinPriceInfoDao().getPriceInfoAboutCoin(fSym)
-    }
-
     private fun loadData() {
         val disposable = ApiFactory.apiService.getTopCoinsInfo(limit = 50)
-            .map { it.data?.map { it.coinInfo?.name }?.joinToString { "," } }
+            .map { it.data?.map { it.coinInfo?.name }?.joinToString(",") }
             .flatMap { ApiFactory.apiService.getFullPriceList(fSyms = it) }
             .map { getPriceListFromRawData(it) }
-            .delaySubscription(10,TimeUnit.SECONDS)
+            .delaySubscription(10, TimeUnit.SECONDS)
             .repeat()
             .retry()
             .subscribeOn(Schedulers.io())
             .subscribe({
                 db.coinPriceInfoDao().insertPriceList(it)
-                Log.d("TEST_OF_LOADING_DATA", "Seccess:$it")
+                Log.d("TEST_OF_LOADING_DATA", "Success: $it")
             }, {
-                Log.d("TEST_OF_LOADING_DATA", "Failure + ${it.message.toString()}")
+                Log.d("TEST_OF_LOADING_DATA", "Failure: ${it.message}")
             })
         compositeDisposable.add(disposable)
     }
@@ -51,15 +51,14 @@ class CoinViewModel(application: Application) : AndroidViewModel(application) {
         coinPriceInfoRawData: CoinPriceInfoRawData
     ): List<CoinPriceInfo> {
         val result = ArrayList<CoinPriceInfo>()
-        val jsonObject = coinPriceInfoRawData.coinPriceInfoJsonObject
-        if (jsonObject == null) return result
+        val jsonObject = coinPriceInfoRawData.coinPriceInfoJsonObject ?: return result
         val coinKeySet = jsonObject.keySet()
         for (coinKey in coinKeySet) {
             val currencyJson = jsonObject.getAsJsonObject(coinKey)
             val currencyKeySet = currencyJson.keySet()
             for (currencyKey in currencyKeySet) {
                 val priceInfo = Gson().fromJson(
-                    currencyJson.getAsJsonArray(currencyKey),
+                    currencyJson.getAsJsonObject(currencyKey),
                     CoinPriceInfo::class.java
                 )
                 result.add(priceInfo)
