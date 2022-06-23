@@ -1,4 +1,4 @@
-package com.example.cryptoapp.data.model
+package com.example.cryptoapp.data.network.model
 
 
 import androidx.room.Entity
@@ -8,16 +8,8 @@ import com.example.cryptoapp.utils.convertTimestampToTime
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-
 @Entity(tableName = "full_price_list")
-data class CoinPriceInfo(
-
-    @SerializedName("TYPE")
-    @Expose
-    val type: String?,
-    @SerializedName("MARKET")
-    @Expose
-    val market: String?,
+data class CoinInfoDto(
     @PrimaryKey
     @SerializedName("FROMSYMBOL")
     @Expose
