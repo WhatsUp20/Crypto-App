@@ -1,11 +1,10 @@
-package com.example.cryptoapp.api
+package com.example.cryptoapp.data.network
 
-import com.example.cryptoapp.pojo.CoinInfoListOfData
-import com.example.cryptoapp.pojo.CoinPriceInfoRawData
+import com.example.cryptoapp.data.model.CoinInfoListOfData
+import com.example.cryptoapp.data.model.CoinPriceInfoRawData
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
-import java.util.*
 
 interface ApiService {
 

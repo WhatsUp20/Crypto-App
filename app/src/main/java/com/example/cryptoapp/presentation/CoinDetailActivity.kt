@@ -1,4 +1,4 @@
-package com.example.cryptoapp.api
+package com.example.cryptoapp.presentation
 
 import android.content.Context
 import android.content.Intent
@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.cryptoapp.CoinViewModel
 import com.example.cryptoapp.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_coin_detail.*
@@ -23,7 +22,8 @@ class CoinDetailActivity : AppCompatActivity() {
             return
         }
         val fromSymbol = intent.getStringExtra(EXTRA_FROM_SYMBOL)
-        viewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(application).create(CoinViewModel::class.java)
+        viewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(application).create(
+            CoinViewModel::class.java)
         fromSymbol?.let {
             viewModel.getDetailInfo(it).observe(this, Observer {
                 tvPrice.text = it.price
