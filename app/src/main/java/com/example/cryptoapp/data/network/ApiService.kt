@@ -2,7 +2,6 @@ package com.example.cryptoapp.data.network
 
 import com.example.cryptoapp.data.network.model.CoinNamesListDto
 import com.example.cryptoapp.data.network.model.CoinInfoJsonContainerDto
-import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -28,7 +27,6 @@ interface ApiService {
         private const val QUERY_PARAM_TO_SYMBOL = "tsym"
         private const val QUERY_PARAM_TO_SYMBOLS = "tsyms"
         private const val QUERY_PARAM_FROM_SYMBOLS = "fsyms"
-
         private const val CURRENCY = "USD"
     }
 }
