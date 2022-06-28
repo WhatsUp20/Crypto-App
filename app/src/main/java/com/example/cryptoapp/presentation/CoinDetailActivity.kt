@@ -36,7 +36,7 @@ class CoinDetailActivity : AppCompatActivity() {
                 tvLastUpdate.text = it.lastUpdate
                 tvFromSymbol.text = it.fromSymbol
                 tvToSymbol.text = it.toSymbol
-                Picasso.get().load(it.imageUrl).into(ivLogoCoin)
+                Picasso.get().load(it.imageUrl).into(tvLogoCoin)
             }
         }
     }

@@ -7,7 +7,7 @@
     tools:context=".presentation.CoinDetailActivity">
 
     <ImageView
-        android:id="@+id/ivLogoCoin"
+        android:id="@+id/tvLogoCoin"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginTop="16dp"
@@ -25,7 +25,7 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivLogoCoin" />
+        app:layout_constraintTop_toBottomOf="@+id/tvLogoCoin" />
 
     <TextView
         android:id="@+id/tvFromSymbol"
