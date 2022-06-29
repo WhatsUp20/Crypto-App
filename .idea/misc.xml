@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/AVPOGOS2/Desktop/WorK/Crypto-App/app/src/main/res/layout-land/activity_coin_price_list.xml" value="0.2625" />
+        <entry key="..\:/Users/AVPOGOS2/Desktop/WorK/Crypto-App/app/src/main/res/layout/activity_coin_detail.xml" value="0.23055555555555557" />
+        <entry key="..\:/Users/AVPOGOS2/Desktop/WorK/Crypto-App/app/src/main/res/layout/activity_coin_price_list.xml" value="0.2" />
+        <entry key="..\:/Users/AVPOGOS2/Desktop/WorK/Crypto-App/app/src/main/res/layout/fragment_coin_detail.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/AVPOGOS2/Desktop/WorK/Crypto-App/app/src/main/res/layout/item_coin_info.xml" value="0.1625" />
       </map>
     </option>
